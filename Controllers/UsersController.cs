@@ -9,22 +9,20 @@ using vstaskmgr.Bll;
 namespace vstaskmgr.Controllers
 {
     [Route("api/[controller]")]
-    public class QuotesController : Controller
+    public class UsersController : Controller
     {
         [HttpGet]
-        public IEnumerable<Quote> Get()
+        public IEnumerable<User> Get()
         {
-            return new QuoteBll().GetQuoteList();
+            return null;
+            // return new ProjectBll().GetProjectList();
         }
 
         // GET api/Quotes/5
         [HttpGet("{id}")]
-        public Quote Get(int id)
+        public User Get(string id)
         {
-            var qList = new QuoteBll().GetQuoteList();
-            Random r = new Random();
-            int n = r.Next(new QuoteBll().GetQuoteList().Count);
-            return qList.ElementAt(n);
+            return null;
         }
     }
 }

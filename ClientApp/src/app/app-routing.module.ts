@@ -20,19 +20,19 @@ const routes: Routes = [
     loadChildren: "./project/project.module#ProjectModule",
     // loadChildren: () => ProjectModule,
     pathMatch: "full",
-    canActivate: [AuthGuardService]
+    // canActivate: [AuthGuardService]
   },
   {
     path: "tasklists/:id",
     loadChildren: "./task/task.module#TaskModule",
     // loadChildren: () => TaskModule,
-    canActivate: [AuthGuardService]
+    // canActivate: [AuthGuardService]
   },
   {
     path: "mycal/:view",
     loadChildren: "./my-calendar/index#MyCalendarModule",
     // loadChildren: () => MyCalendarModule,
-    canActivate: [AuthGuardService]
+    // canActivate: [AuthGuardService]
   },
   {
     path: '**', redirectTo: '/login'

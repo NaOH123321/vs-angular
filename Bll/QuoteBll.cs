@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using vstaskmgr.Model;
 
-namespace vstaskmgr.BLL
+namespace vstaskmgr.Bll
 {
-    public class QuotesBLL
+    public class QuoteBll
     {
-        private List<Quote> getQuoteList()
+        private List<Quote> GetQuotesList()
         {
             List<Quote> quoteArray = new List<Quote>();
             Quote quote1 = new Quote(
@@ -34,7 +34,7 @@ namespace vstaskmgr.BLL
         }
         public List<Quote> GetQuoteList()
         {
-            List<Quote> quoteArray = getQuoteList();
+            List<Quote> quoteArray = GetQuotesList();
             return quoteArray;
         }
 
