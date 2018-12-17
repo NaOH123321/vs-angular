@@ -1,10 +1,12 @@
+using MongoDB.Bson;
+
 namespace vstaskmgr.Model
 {
     public class User
     {
         public User()
         { }
-        public User(int id, string email, string name, string password, string avatar)
+        public User(ObjectId id, string email, string name, string password, string avatar)
         {
             this.Id = id;
             this.Email = email;
@@ -12,7 +14,7 @@ namespace vstaskmgr.Model
             this.Password = password;
             this.Avatar = avatar;
         }
-        public int Id { get; set; }
+        public ObjectId Id { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }

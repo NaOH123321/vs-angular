@@ -1,10 +1,12 @@
+using MongoDB.Bson;
+
 namespace vstaskmgr.Model
 {
     public class Project
     {
         public Project()
         { }
-        public Project(string id, string name, string coverImg, string desc = null, string[] taskLists = null, string[] members = null)
+        public Project(ObjectId id, string name, string coverImg, string desc = null, string[] taskLists = null, string[] members = null)
         {
             this.Id = id;
             this.Name = name;
@@ -13,7 +15,7 @@ namespace vstaskmgr.Model
             this.TaskLists = taskLists;
             this.Members = members;
         }
-        public string Id { get; set; }
+        public ObjectId Id { get; set; }
         public string Name { get; set; }
         public string Desc { get; set; }
         public string CoverImg { get; set; }
