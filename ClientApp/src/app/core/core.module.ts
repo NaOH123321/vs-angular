@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppStoreModule } from './../reducers/index';
 import { AppEffectsModule } from '../effects';
 import { registerLocaleData } from '@angular/common';
-import "hammerjs"
+import "hammerjs";
 
 import localeZh from '@angular/common/locales/zh';
 registerLocaleData(localeZh);
