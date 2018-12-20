@@ -107,7 +107,7 @@ public class MongoDbHelper
         /// <param name="collectionName"></param>
         /// <param name="query"></param>
         /// <returns></returns>
-        public static T GetOne<T>(string collectionName, BsonDocument query) where T : class
+        public static T GetOne<T>(string collectionName, FilterDefinition<T> query) where T : class
         {
             T result = default(T);
             MongoClient mongo = new MongoClient(connectionString);
@@ -151,6 +151,20 @@ public class MongoDbHelper
             IMongoDatabase taskmgr = mongo.GetDatabase(database);
             IMongoCollection<T> categories = taskmgr.GetCollection<T>(collectionName);
             result = categories.Find(new BsonDocument()).ToList();
+            return result;
+        }
+        /// <summary>
+        /// 获取列表
+        /// </summary>
+        /// <param name="collectionName"></param>
+        /// <returns></returns>
+        public static List<T> GetList<T>(string collectionName, FilterDefinition<T> selector ) where T : class
+        {
+            List<T> result = new List<T>();
+            MongoClient mongo = new MongoClient(connectionString);
+            IMongoDatabase taskmgr = mongo.GetDatabase(database);
+            IMongoCollection<T> categories = taskmgr.GetCollection<T>(collectionName);
+            result = categories.Find(selector).ToList();
             return result;
         }
         /*

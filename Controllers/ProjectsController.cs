@@ -2,29 +2,46 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using vstaskmgr.Model;
 using vstaskmgr.Bll;
+using vstaskmgr.Model;
 
 namespace vstaskmgr.Controllers
 {
     [Route("api/[controller]")]
     public class ProjectsController : Controller
     {
+        // GET: api/Projects
         [HttpGet]
-        public IEnumerable<Project> Get()
+        public IEnumerable<Project> Get([FromQuery]string members_like, string userless = null)
         {
-            return new ProjectBll().GetProjectList();
+            return new ProjectBll().GetProjectList(members_like);
         }
 
-        // GET api/Quotes/5
-        //    [HttpGet("{id}")]
-        // public Project Get(string id)
-        // {
-        //     var qList = new ProjectBll().GetProjectList();
-        //     Random r = new Random();
-        //     int n = r.Next(new ProjectBll().GetQuoteList().Count);
-        //     return qList.ElementAt(n);
-        // }
+        // GET: api/Projects/5
+        [HttpGet("{id}")]
+        public Project Get(string id)
+        {
+            return new ProjectBll().GetProjectById(id);
+        }
+
+        // POST: api/Projects
+        [HttpPost]
+        public void Post([FromBody] string value)
+        {
+        }
+
+        // PUT: api/Projects/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
+        }
+
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
     }
 }

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, from, throwError } from 'rxjs';
 import { Auth, User } from './../domain';
 import { switchMap, map } from 'rxjs/operators';
+import { debug } from '../utils/debug.util';
 
 @Injectable({
     providedIn: 'root'
@@ -36,7 +37,8 @@ export class AuthService {
 
     login(username: string, password: string): Observable<Auth> {
         const url = `${this.config.uri}/${this.domain}`;
-        return this.http.get<User[]>(url, { params: { "email": username, "password": password } }).pipe(
+      return this.http.get<User[]>(url, { params: { "email": username, "password": password } }).pipe(
+            debug("--------Login:"),
             map(res => {
                 if (res.length === 0)
                     throw new Error('Username or password incorrect');

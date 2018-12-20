@@ -2,27 +2,46 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using vstaskmgr.Model;
 using vstaskmgr.Bll;
+using vstaskmgr.Model;
 
 namespace vstaskmgr.Controllers
 {
     [Route("api/[controller]")]
     public class UsersController : Controller
     {
+        // GET: api/Users
         [HttpGet]
-        public IEnumerable<User> Get()
+        public User[] Get([FromQuery]string email, [FromQuery]string password)
         {
-            return null;
-            // return new ProjectBll().GetProjectList();
+            return new User[] { new UserBll().GetLoginUser(email, password) };
         }
 
-        // GET api/Quotes/5
+        // GET: api/Users/5
         [HttpGet("{id}")]
-        public User Get(string id)
+        public string Get(int id)
         {
-            return null;
+            return "value";
+        }
+
+        // POST: api/Users
+        [HttpPost]
+        public void Post([FromBody] string value)
+        {
+        }
+
+        // PUT: api/Users/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
+        }
+
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
         }
     }
 }
