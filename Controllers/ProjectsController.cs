@@ -13,8 +13,8 @@ namespace vstaskmgr.Controllers
     public class ProjectsController : Controller
     {
         // GET: api/Projects
-        [HttpGet]
-        public IEnumerable<Project> Get([FromQuery]string members_like, string userless = null)
+        [HttpGet("find")]
+        public IEnumerable<Project> FindProjectsByUserId([FromQuery]string members_like)
         {
             return new ProjectBll().GetProjectList(members_like);
         }

@@ -16,5 +16,17 @@ namespace vstaskmgr.Bll
             User user = DBUtility.MongoDbHelper.GetOne<User>("user", filter);
             return user;
         }
+
+        public List<User> GetAllUsers()
+        {
+            return DBUtility.MongoDbHelper.GetAll<User>("user");
+        }
+
+        public User GetProjectById(string id)
+        {
+            var userId = new ObjectId(id);
+            var filter = new ExpressionFilterDefinition<User>(project => project.Id == userId);
+            return DBUtility.MongoDbHelper.GetOne<User>("user", filter);
+        }
     }
 }

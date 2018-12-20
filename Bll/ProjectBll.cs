@@ -16,8 +16,8 @@ namespace vstaskmgr.Bll
 
         public Project GetProjectById(string id)
         {
-            var docId = new ObjectId(id);
-            var filter = new ExpressionFilterDefinition<Project>(project => project.Id == docId);
+            var projectId = new ObjectId(id);
+            var filter = new ExpressionFilterDefinition<Project>(project => project.Id == projectId);
             return DBUtility.MongoDbHelper.GetOne<Project>("project", filter);
         }
     }

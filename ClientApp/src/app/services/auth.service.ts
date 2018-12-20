@@ -36,7 +36,7 @@ export class AuthService {
     }
 
     login(username: string, password: string): Observable<Auth> {
-        const url = `${this.config.uri}/${this.domain}`;
+        const url = `${this.config.uri}/${this.domain}/login`;
       return this.http.get<User[]>(url, { params: { "email": username, "password": password } }).pipe(
             debug("--------Login:"),
             map(res => {

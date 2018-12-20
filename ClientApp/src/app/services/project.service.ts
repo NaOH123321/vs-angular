@@ -65,7 +65,7 @@ export class ProjectService {
   // }
 
   get(userId: string): Observable<Project[]> {
-    const url = `${this.config.uri}/${this.domain}`;
+    const url = `${this.config.uri}/${this.domain}/find`;
     return this.http.get<Project[]>(url, { params: { "members_like": userId } });
   }
 

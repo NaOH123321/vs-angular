@@ -13,17 +13,24 @@ namespace vstaskmgr.Controllers
     public class UsersController : Controller
     {
         // GET: api/Users
-        [HttpGet]
-        public User[] Get([FromQuery]string email, [FromQuery]string password)
+        [HttpGet("login")]
+        public IEnumerable<User> Login([FromQuery]string email, [FromQuery]string password)
         {
             return new User[] { new UserBll().GetLoginUser(email, password) };
         }
 
+        // GET: api/Users
+        [HttpGet]
+        public IEnumerable<User> Get()
+        {
+            return new UserBll().GetAllUsers();
+        }
+
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public User Get(string id)
         {
-            return "value";
+            return new UserBll().GetProjectById(id);
         }
 
         // POST: api/Users
