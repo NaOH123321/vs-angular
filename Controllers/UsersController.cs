@@ -4,33 +4,41 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using vstaskmgr.Bll;
 using vstaskmgr.Model;
+
+using vstaskmgr.Services;
 
 namespace vstaskmgr.Controllers
 {
     [Route("api/[controller]")]
     public class UsersController : Controller
     {
+        private readonly UserService _userService;
+
+        public UsersController(UserService userService)
+        {
+            _userService = userService;
+        }
+
         // GET: api/Users
         [HttpGet("login")]
         public IEnumerable<User> Login([FromQuery]string email, [FromQuery]string password)
         {
-            return new User[] { new UserBll().GetLoginUser(email, password) };
+            return new User[] { _userService.GetLoginUser(email, password) };
         }
 
         // GET: api/Users
         [HttpGet]
         public IEnumerable<User> Get()
         {
-            return new UserBll().GetAllUsers();
+            return _userService.GetAllUsers();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public User Get(string id)
         {
-            return new UserBll().GetProjectById(id);
+            return _userService.GetProjectById(id);
         }
 
         // POST: api/Users

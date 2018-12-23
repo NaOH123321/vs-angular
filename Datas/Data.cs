@@ -3,12 +3,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using vstaskmgr.DBUtility;
 using vstaskmgr.Model;
 
 namespace vstaskmgr.Datas
 {
     public class Data
     {
+        private readonly MongoDbHelper _mongoDbHelper;
+
+        public Data(MongoDbHelper mongoDbHelper)
+        {
+            _mongoDbHelper = mongoDbHelper;
+        }
+
         private void AddQuote()
         {
             var document1 = new BsonDocument
@@ -93,7 +101,7 @@ namespace vstaskmgr.Datas
             list.Add(document9);
             list.Add(document10);
 
-            DBUtility.MongoDbHelper.InsertAll("quote", list);
+            _mongoDbHelper.InsertAll("quote", list);
         }
 
         private void AddProject()
@@ -117,8 +125,8 @@ namespace vstaskmgr.Datas
             list.Add(project1);
             list.Add(project2);
 
-            DBUtility.MongoDbHelper.AddCollection("project");
-            DBUtility.MongoDbHelper.InsertAll("project", list);
+            _mongoDbHelper.AddCollection("project");
+            _mongoDbHelper.InsertAll("project", list);
         }
 
         private void AddUser()
@@ -155,8 +163,8 @@ namespace vstaskmgr.Datas
             list.Add(user2);
             list.Add(user3);
 
-            DBUtility.MongoDbHelper.AddCollection("user");
-            DBUtility.MongoDbHelper.InsertAll("user", list);
+            _mongoDbHelper.AddCollection("user");
+            _mongoDbHelper.InsertAll("user", list);
         }
 
         private void AddTaskList()
@@ -203,8 +211,8 @@ namespace vstaskmgr.Datas
             list.Add(taskList4);
             list.Add(taskList5);
 
-            DBUtility.MongoDbHelper.AddCollection("taskList");
-            DBUtility.MongoDbHelper.InsertAll("taskList", list);
+            _mongoDbHelper.AddCollection("taskList");
+            _mongoDbHelper.InsertAll("taskList", list);
         }
     }
 }

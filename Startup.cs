@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using vstaskmgr.DBUtility;
+using vstaskmgr.Services;
 
 namespace vstaskmgr
 {
@@ -20,6 +22,11 @@ namespace vstaskmgr
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<MongoDbHelper>();
+            services.AddScoped<QuoteService>();
+            services.AddScoped<UserService>();
+            services.AddScoped<ProjectService>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the Angular files will be served from this directory
