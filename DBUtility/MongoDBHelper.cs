@@ -72,17 +72,30 @@ namespace vstaskmgr.DBUtility
 
         #region 更新
         /// <summary>
-        /// 更新操作
+        /// 替换操作
         /// </summary>
         /// <typeparam name="T">类型</typeparam>
         /// <param name="collectionName">表名</param>
         /// <param name="query">条件</param>
         /// <param name="entry">新实体</param>
-        public void Update<T>(string collectionName, BsonDocument entity, BsonDocument query) where T : class
+        public void Update<T>(string collectionName, T entity, FilterDefinition<T> query) where T : class
         {
             IMongoCollection<T> categories = _database.GetCollection<T>(collectionName);
-            categories.UpdateOne(entity, query);
+            categories.ReplaceOne(query, entity);
         }
+        /// <summary>
+        /// 更新操作
+        /// </summary>
+        /// <typeparam name="T">类型</typeparam>
+        /// <param name="collectionName">表名</param>
+        /// <param name="query">条件</param>
+        /// <param name="entry">更新内容实体</param>
+        public void Update<T>(string collectionName, UpdateDefinition<T> entity, FilterDefinition<T> query) where T : class
+        {
+            IMongoCollection<T> categories = _database.GetCollection<T>(collectionName);
+            categories.UpdateOne(query, entity);
+        }
+        
         /// <summary>
         /// 更新操作
         /// </summary>
@@ -225,7 +238,7 @@ namespace vstaskmgr.DBUtility
         /// <typeparam name="T"></typeparam>
         /// <param name="collectionName"></param>
         /// <param name="entity"></param>
-        public void Delete<T>(string collectionName, BsonDocument query) where T : class
+        public void DeleteOne<T>(string collectionName, FilterDefinition<T> query) where T : class
         {
             IMongoCollection<T> categories = _database.GetCollection<T>(collectionName);
             categories.DeleteOne(query);

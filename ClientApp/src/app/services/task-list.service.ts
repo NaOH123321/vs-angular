@@ -34,7 +34,7 @@ export class TaskListService {
     }
 
     get(projectId: string): Observable<TaskList[]> {
-        const url = `${this.config.uri}/${this.domain}`;
+        const url = `${this.config.uri}/${this.domain}/find`;
         return this.http.get<TaskList[]>(url, { params: { "projectId": projectId } });
     }
 

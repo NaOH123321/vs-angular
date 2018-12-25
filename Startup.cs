@@ -22,10 +22,11 @@ namespace vstaskmgr
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<MongoDbHelper>();
+            services.AddSingleton<MongoDbHelper>();
             services.AddScoped<QuoteService>();
             services.AddScoped<UserService>();
             services.AddScoped<ProjectService>();
+            services.AddScoped<TaskListService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
