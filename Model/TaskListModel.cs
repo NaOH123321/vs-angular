@@ -11,7 +11,7 @@ namespace vstaskmgr.Model
         public string Name { get; set; }
 
         [BsonElement("Order")]
-        public int Order { get; set; }
+        public int Order { get; set; } = 0;
 
         [BsonElement("ProjectId")]
         public string ProjectId { get; set; }

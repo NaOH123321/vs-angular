@@ -19,7 +19,7 @@ namespace vstaskmgr.Model
         public string Name { get; set; }
         public string Desc { get; set; }
         public string CoverImg { get; set; }
-        public string[] TaskLists { get; set; }
-        public string[] Members { get; set; }
+        public string[] TaskLists { get; set; } = null;
+        public string[] Members { get; set; } = null;
     }
 }

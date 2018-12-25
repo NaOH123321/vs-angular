@@ -18,7 +18,7 @@ namespace vstaskmgr.Model
             this.IdentityType = identityType;
         }
         public string IdentityNo { get; set; }
-        public IdentityType IdentityType { get; set; }
+        public IdentityType IdentityType { get; set; } = IdentityType.IdCard;
     }
 }
 

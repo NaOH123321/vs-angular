@@ -19,7 +19,7 @@ namespace vstaskmgr.Model
         public string Name { get; set; }
         public string Password { get; set; }
         public string Avatar { get; set; }
-        public string[] ProjectIds { get; set; }
+        public string[] ProjectIds { get; set; } = null;
         public Address address { get; set; }
         public Identity identity { get; set; }
         public string birthday { get; set; }
