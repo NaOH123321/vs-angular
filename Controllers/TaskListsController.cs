@@ -27,7 +27,7 @@ namespace vstaskmgr.Controllers
             return _taskListService.Get();
         }
 
-        // GET: api/Users
+        // GET: api/TaskLists/find
         [HttpGet("find")]
         public IEnumerable<TaskList> FindTaskLists([FromQuery]string projectId)
         {

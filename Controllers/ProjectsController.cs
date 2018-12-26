@@ -19,7 +19,7 @@ namespace vstaskmgr.Controllers
             _projectService = projectService;
         }
 
-        // GET: api/Projects
+        // GET: api/Projects/find
         [HttpGet("find")]
         public IEnumerable<Project> FindProjectsByUserId([FromQuery]string members_like)
         {

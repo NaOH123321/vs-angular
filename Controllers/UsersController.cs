@@ -20,7 +20,7 @@ namespace vstaskmgr.Controllers
             _userService = userService;
         }
 
-        // GET: api/Users
+        // GET: api/Users/login
         [HttpGet("login")]
         public IEnumerable<User> Login([FromQuery]string email, [FromQuery]string password)
         {
