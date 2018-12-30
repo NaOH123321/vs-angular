@@ -27,6 +27,7 @@ namespace vstaskmgr
             services.AddScoped<UserService>();
             services.AddScoped<ProjectService>();
             services.AddScoped<TaskListService>();
+            services.AddScoped<TaskService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

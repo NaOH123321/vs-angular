@@ -52,7 +52,7 @@ export class TaskService {
     }
 
     get(taskListId: string): Observable<Task[]> {
-        const url = `${this.config.uri}/${this.domain}`;
+        const url = `${this.config.uri}/${this.domain}/find`;
         return this.http.get<Task[]>(url, { params: { "taskListId": taskListId } });
     }
 
@@ -82,7 +82,7 @@ export class TaskService {
     }
 
     getAllTasks(userId: string): Observable<Task[]> {
-        const url = `${this.config.uri}/${this.domain}`;
+        const url = `${this.config.uri}/${this.domain}/findAll`;
         return this.http.get<Task[]>(url, { params: { "ownerId": userId } });
     }
 }
