@@ -1,3 +1,4 @@
+using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -17,16 +18,19 @@ namespace vstaskmgr.Model
         public int Priority { get; set; } = 0;
 
         [BsonElement("DueDate")]
-        public BsonDateTime DueDate { get; set; } = null;
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
+        public DateTime? DueDate { get; set; } = null;
 
         [BsonElement("Reminder")]
-        public BsonDateTime Reminder { get; set; } = null;
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
+        public DateTime? Reminder { get; set; } = null;
 
         [BsonElement("Remark")]
         public string Remark { get; set; }
 
         [BsonElement("CreateDate")]
-        public BsonDateTime CreateDate { get; set; } = null;
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
+        public DateTime? CreateDate { get; set; } = null;
 
         [BsonElement("OwnerId")]
         public string OwnerId { get; set; }
