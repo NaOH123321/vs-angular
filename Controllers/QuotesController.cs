@@ -21,16 +21,16 @@ namespace vstaskmgr.Controllers
         [HttpGet]
         public IEnumerable<Quote> Get()
         {
-            return _quoteService.GetQuoteList();
+            return _quoteService.Get();
         }
 
         // GET api/Quotes/5
         [HttpGet("{id}")]
         public Quote Get(int id)
         {
-            var qList = _quoteService.GetQuoteList();
+            var qList = _quoteService.Get();
             Random r = new Random();
-            int n = r.Next(_quoteService.GetQuoteList().Count);
+            int n = r.Next(_quoteService.Get().Count);
             return qList.ElementAt(n);
         }
     }

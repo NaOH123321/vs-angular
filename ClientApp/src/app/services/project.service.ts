@@ -17,7 +17,6 @@ export class ProjectService {
   constructor(private http: HttpClient, @Inject("BASE_CONFIG") private config) { }
 
   add(project: Project): Observable<Project> {
-    project.id = null;
     const url = `${this.config.uri}/${this.domain}`;
     return this.http.post<Project>(url, JSON.stringify(project), { headers: this.headers });
   }

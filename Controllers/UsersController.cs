@@ -29,20 +29,49 @@ namespace vstaskmgr.Controllers
         [HttpGet]
         public IEnumerable<User> Get()
         {
-            return _userService.GetAllUsers();
+            return _userService.Get();
+        }
+
+        // GET: api/Users/search
+        [HttpGet("search")]
+        public IEnumerable<User> FindUsersByEmail([FromQuery]string email)
+        {
+            return _userService.GetByEmail(email);
+        }
+
+        // GET: api/Users/find
+        [HttpGet("find")]
+        public IEnumerable<User> FindUsersByProjectId([FromQuery]string projectIds_like)
+        {
+            return _userService.GetByProjectId(projectIds_like);
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public User Get(string id)
         {
-            return _userService.GetProjectById(id);
+            return _userService.Get(id);
         }
 
         // POST: api/Users
         [HttpPost]
-        public void Post([FromBody] string value)
+        public User Post([FromBody] User user)
         {
+            return _userService.Create(user);
+        }
+
+        // Patch: api/Users/5
+        [HttpPatch("{id}")]
+        public User Patch(string id, [FromBody] User userIn)
+        {
+            var task = _userService.Get(id);
+
+            if (task != null)
+            {
+                _userService.Update(id, userIn);
+            }
+
+            return Get(id);
         }
 
         // PUT: api/Users/5

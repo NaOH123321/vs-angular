@@ -6,6 +6,7 @@ namespace vstaskmgr.Services
 {
     public class QuoteService
     {
+        private readonly string _collectrionName = "quote";
         private readonly MongoDbHelper _mongoDbHelper;
 
         public QuoteService(MongoDbHelper mongoDbHelper)
@@ -13,10 +14,9 @@ namespace vstaskmgr.Services
             _mongoDbHelper = mongoDbHelper;
         }
 
-        public List<Quote> GetQuoteList()
+        public List<Quote> Get()
         {
-            List<Quote> quoteArray = _mongoDbHelper.GetAll<Quote>("quote");
-            return quoteArray;
+            return _mongoDbHelper.GetAll<Quote>(_collectrionName);
         }
     }
 }

@@ -28,7 +28,7 @@ export class UserService {
     }
 
     getUserByProject(projectId: string): Observable<User[]> {
-        const url = `${this.config.uri}/${this.domain}`;
+        const url = `${this.config.uri}/${this.domain}/find`;
         return this.http.get<User[]>(url, { params: { "projectIds_like": projectId } });
     }
 

@@ -24,7 +24,7 @@ export class AuthService {
 
     register(user: User): Observable<Auth> {
         const url = `${this.config.uri}/${this.domain}`;
-        return this.http.get<User[]>(url, { params: { "email": user.email } }).pipe(
+      return this.http.get<User[]>(url +`/search`, { params: { "email": user.email } }).pipe(
             switchMap(res => {
                 if (res.length > 0)
                     throw new Error("user existed");
