@@ -1,8 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Filters;
 using vstaskmgr.Model;
 using vstaskmgr.Services;
 
@@ -18,9 +22,16 @@ namespace vstaskmgr.Controllers
             _quoteService = quoteService;
         }
 
-        [HttpGet]
-        public IEnumerable<Quote> Get()
+        [HttpGet("Getpp")]
+        public ActionResult<IEnumerable<Quote>> Getgg(int id)
         {
+            if (!ModelState.IsValid)
+            {
+                ObjectResult result = new ObjectResult(ModelState);
+                result.StatusCode = StatusCodes.Status400BadRequest;
+                result.Value = new ReturnMessage() { StatusCode = 10000, Message = "sdsdsadsadsads" };
+                return result;
+            }
             return _quoteService.Get();
         }
 
@@ -32,6 +43,16 @@ namespace vstaskmgr.Controllers
             Random r = new Random();
             int n = r.Next(_quoteService.Get().Count);
             return qList.ElementAt(n);
+        }
+
+        private class ReturnMessage
+        {
+            public ReturnMessage()
+            {
+            }
+
+            public object StatusCode { get; set; }
+            public object Message { get; set; }
         }
     }
 }
